@@ -47,11 +47,4 @@ class CheckoutPage:
         )
         payment_btn.click()
 
-    # def enter_payment_details(self, card_number, cvv):
-    #     """Enters payment details (mock)."""
-    #     self.driver.find_element(By.NAME, "debitCard").send_keys(card_number)
-    #     self.driver.find_element(By.NAME, "cvv").send_keys(cvv)
-    #
-    # def enter_otp(self, otp):
-    #     """Simulates OTP entry."""
-    #     self.driver.find_element(By.NAME, "otp").send_keys(otp)
+
