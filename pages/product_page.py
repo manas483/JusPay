@@ -19,6 +19,7 @@ class ProductPage:
         if products:
             products[4].click()
             self.driver.switch_to.window(self.driver.window_handles[1])
+            time.sleep(5)
             
     def add_to_cart(self):
         add_to_cart_button = self.driver.find_element(By.XPATH, "//button[contains(text(),'Add to cart')]")
