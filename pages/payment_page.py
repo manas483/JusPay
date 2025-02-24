@@ -3,9 +3,9 @@ from pages.base_page import BasePage
 
 
 class PaymentPage(BasePage):
-    NET_BANKING_OPTION = (By.XPATH, "//button[text()='Net Banking']")
-    UPI_OPTION = (By.XPATH, "//button[text()='UPI']")
-    CARD_OPTION = (By.XPATH, "//button[text()='Debit/Credit Card']")
+    NET_BANKING_OPTION = (By.XPATH, "//label[@for='NET_OPTIONS']//div[@class='_9-suWS']")
+    UPI_OPTION = (By.XPATH, "//span[normalize-space()='UPI']")
+    CARD_OPTION = (By.XPATH, "//span[normalize-space()='Credit / Debit / ATM Card']")
     OTP_FIELD = (By.XPATH, "//input[@type='password']")
     SUBMIT_OTP = (By.XPATH, "//button[contains(text(),'Submit')]")
 

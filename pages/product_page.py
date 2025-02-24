@@ -11,13 +11,13 @@ class ProductPage:
 
     def search_product(self, products):
         search_box = self.driver.find_element(By.NAME, "q")
-        search_box.send_keys("iphone 15" + Keys.RETURN)
+        search_box.send_keys(products + Keys.RETURN)
 
     def select_first_product(self):
         self.driver.implicitly_wait(5)
         products = self.driver.find_elements(By.CLASS_NAME, "KzDlHZ")
         if products:
-            products[3].click()
+            products[4].click()
             self.driver.switch_to.window(self.driver.window_handles[1])
             time.sleep(10)
 

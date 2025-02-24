@@ -33,5 +33,5 @@ def test_flipkart_checkout(setup):
     product_page.add_to_cart()
 
     checkout_page.proceed_to_checkout()
-    checkout_page.enter_email("sachan.manas483@gmail.com")
+    checkout_page.enter_email(test_data["email"])
     checkout_page.click_continue()
