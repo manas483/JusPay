@@ -57,14 +57,46 @@ class CheckoutPage:
         act_button.click()
         time.sleep(15)
 
-    def select_cvv(self):
-        cvv = WebDriverWait(self.driver, 10).until(
+    def select_credit_debit_card(self):
+        credit_card_option = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, "//label[@for='CREDIT']"))
+        )
+        credit_card_option.click()
+        time.sleep(5)
+
+    def enter_card_details(self):
+        card_number_field = WebDriverWait(self.driver, 10).until(
+            EC.visibility_of_element_located((By.XPATH, "//input[@name='cardNumber']"))
+        )
+        card_number_field.send_keys("1111111111111111")
+
+        time.sleep(5)
+
+        expiry_month_dropdown = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.NAME, "month"))
+        )
+        expiry_month_dropdown.click()
+
+        expiry_month_option = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, "//option[contains(text(),'12')]"))  # Selecting December
+        )
+        expiry_month_option.click()
+
+        expiry_year_dropdown = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.NAME, "year"))
+        )
+        expiry_year_dropdown.click()
+
+        expiry_year_option = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, "//option[contains(text(),'26')]"))
+        )
+        expiry_year_option.click()
+
+        time.sleep(5)
+
+        cvv_field = WebDriverWait(self.driver, 10).until(
             EC.visibility_of_element_located((By.XPATH, "//input[@name='cvv']"))
         )
-        cvv.send_keys("939")
-        cvv_button = WebDriverWait(self.driver, 10).until(
-            EC.element_to_be_clickable((By.XPATH, "//button[normalize-space()='Continue']"))
-        )
-        cvv_button.click()
+        cvv_field.send_keys("123")
 
-
+        time.sleep(10)
