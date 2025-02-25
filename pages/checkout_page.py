@@ -23,19 +23,23 @@ class CheckoutPage:
     def click_continue(self):
         continue_btn = self.driver.find_element(By.XPATH, "//span[normalize-space()='CONTINUE']")
         continue_btn.click()
-        time.sleep(5)
+
+        time.sleep(20)
 
     def enter_otp(self, otp):
         otp_field = WebDriverWait(self.driver, 10).until(
-            EC.visibility_of_element_located((By.XPATH, "//input[@class='r4vIwl zgwPDa Jr-g+f']"))
+            EC.visibility_of_element_located((By.XPATH,
+                                              "//input[@maxlength='10' and @autocomplete='off' and @type='text' and contains(@class, 'r4vIwl') and contains(@class, 'Ir-g+f')]"))
         )
         otp_field.send_keys(otp)
 
     def click_login(self):
-        login_btn = self.driver.find_element(By.XPATH, "//button[@type='submit']")
+        login_btn = self.driver.find_element(By.XPATH, "(//button[@type='submit'])[1]")
         login_btn.click()
 
     def select_address(self):
+        dlr_btn = self.driver.find_element(By.XPATH, "//div[@class='lloqNF']//div[2]//div[1]//h3[1]")
+        dlr_btn.click()
 
         deliver_btn = WebDriverWait(self.driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, "//button[normalize-space()='Deliver Here']"))
@@ -47,5 +51,20 @@ class CheckoutPage:
             EC.element_to_be_clickable((By.XPATH, "//button[normalize-space()='CONTINUE']"))
         )
         payment_btn.click()
+        act_button = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, "//button[normalize-space()='Accept & Continue']"))
+        )
+        act_button.click()
+        time.sleep(15)
+
+    def select_cvv(self):
+        cvv = WebDriverWait(self.driver, 10).until(
+            EC.visibility_of_element_located((By.XPATH, "//input[@name='cvv']"))
+        )
+        cvv.send_keys("939")
+        cvv_button = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, "//button[normalize-space()='Continue']"))
+        )
+        cvv_button.click()
 
 
